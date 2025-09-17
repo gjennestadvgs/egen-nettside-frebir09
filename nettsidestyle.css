@@ -6,6 +6,7 @@ body {
     min-height: 100vh;
     margin: 0;
     text-align: center;
+    background: linear-gradient(135deg, #ff0000 0%, #0066ff 100%);
 }
 
 .top_nav {
@@ -23,7 +24,10 @@ body {
 }
 
 .back_arrow, .home_btn {
+    font-size: 2rem;
     margin-right: 5px;
+    text-decoration: none;
+    color: rgb(0,0,0);
     padding: 4px 8px;
 }
 
