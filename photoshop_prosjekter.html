@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Photoshop_prosjekter</title>
+   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="Bilder/favicon-32x32.png">
+</head>
+<body class="Body_Photoshop">
+  <div class="top_nav">
+        <a href="prosjekter.html" class="back_arrow" title="Tilbake"><img src="Bilder/Tilbake_Knapp.png" alt="Tilbake pil ikon" width="40"></a>
+      <a href="index.html" class="home_btn" title="Hjem"><img src="Bilder/Hjem_Knapp.png" alt="Tilbake til startside hus knapp" width="40"></a>
+    </div>
+    <h1>
+  <span id="Typewriter_Text_Index"></span><span class="Typewriter_Cursor">|</span>
+</h1>
+    <p>
+        Her legger jeg ut photoshop prosjektene jeg har jobbet med i Medieproduksjon
+    </p>
+    <!-- Brukte KI for å hjelpe meg å lage denne griden.-->
+    <div class="Photoshop_Gallery">
+      <div class="Project">
+        <img src="Bilder/Movie_Poster_Glow_Shadows_Moved_Text.jpg" alt="Filmplakat av Fredrik han som du hørte om på første side, som holder henda til holder og det eksploder masse ting som ungdommen i dag har angst om, spesielt politikken og tredje verdenskrig." tabindex="0">
+        <p class="Card_Desc">Filmplakat oppgave</p>
+        </div>
+      <div class="Project">
+        <img src="Bilder/Fredrik Birkely - Phlearn_Underexposed Photo.jpg" alt="Et bilde av en dame som er veldig mørkt og uredigert" tabindex="0">
+        <p class="Card_Desc">Portrett redigering før</p>
+        </div>
+      <div class="Project">
+        <img src="Bilder/Fredrik Birkely - Phlearn_Underexposed Photo_Fixed-Full.jpg" alt="Et bilde av en dame som er lyst opp og redigert" tabindex="0">
+        <p class="Card_Desc">Portrett redigering etter</p>
+        </div>
+      </div>
+      <div id="ImageModal" class="Modal">
+        <div class="Modal_Content">
+          <img id="ModalImg" src="" alt="">
+          <div id="ModalDesc" class="Modal_Desc"></div>
+          <span class="Close">&times;</span>
+        </div>
+      </div>
+      <!-- Brukte KI for å hjelpe med å skrive JavaScript-->
+      <script>
+        const projects = [
+          {
+            img: "Bilder/Movie_Poster_Glow_Shadows_Moved_Text.jpg",
+            short: "Filmplakat oppgave",
+            detail: "Dette er en filmplakat jeg lagde i Photoshop. Oppgaven var bare å lage en filmplakat akkurat som du ville, så jeg gikk for generasjons angsten som finnes i dag. Jeg satte blider på blider, linjer på linjer, ga texten litt glød og skygger for å få den til å poppe litt mer. Jeg er ganske fornøyd med resultatet."
+          },
+          {
+            img: "Bilder/Fredrik Birkely - Phlearn_Underexposed Photo.jpg",
+            short: "Portrett redigering før",
+            detail: "Dette er bildet jeg fikk i oppgave å redigere i Photoshop. Det er et ganske mørkt bilde, så jeg viste at jeg måtte lysne det en god del."
+          },
+          {
+            img: "Bilder/Fredrik Birkely - Phlearn_Underexposed Photo_Fixed-Full.jpg",
+            short: "Portrett redigering etter",
+            detail: "Dette er bildet jeg fikk i oppgave å redigere, redigert. Det er mye bedre lys, crop og bare bedre synes jeg.",
+          }
+        ];
+
+        document.querySelectorAll('.Project img').forEach((img, i) => {
+  img.style.cursor = 'pointer';
+  img.addEventListener('click', () => {
+    document.getElementById('ImageModal').style.display = 'flex';
+    document.getElementById('ModalImg').src = projects[i].img;
+    document.getElementById('ModalImg').alt = img.alt;
+    document.getElementById('ModalDesc').textContent = projects[i].detail;
+  });
+
+
+  img.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      document.getElementById('ImageModal').style.display = 'flex';
+      document.getElementById('ModalImg').src = projects[i].img;
+      document.getElementById('ModalImg').alt = img.alt;
+      document.getElementById('ModalDesc').textContent = projects[i].detail;
+    }
+  });
+});
+
+        document.querySelector('.Close').onclick = function() {
+          document.getElementById('ImageModal').style.display = 'none';
+        };
+        document.getElementById('ImageModal').onclick = function(e) {
+          if (e.target === this) this.style.display = 'none';
+        };
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            document.getElementById('ImageModal').style.display = 'none';
+          }
+        });
+
+        const galleryImages = Array.from(document.querySelectorAll('.Project img'));
+
+        document.addEventListener('keydown', function(e) {
+          const focusedIndex = galleryImages.findIndex(img => img === document.activeElement);
+        
+          if (focusedIndex !== -1) {
+            if (e.key === 'ArrowLeft' && focusedIndex > 0) {
+              galleryImages[focusedIndex - 1].focus();
+              e.preventDefault();
+            }
+
+            if (e.key === 'ArrowRight' && focusedIndex < galleryImages.length - 1) {
+              galleryImages[focusedIndex + 1].focus();
+              e.preventDefault();
+            }
+          }
+        });
+      </script>
+      <script src="tilt.js"></script>
+      <script src="TypeWriter.js"></script>
+      <script>
+typeWriterEffect("Mine Photoshop Prosjekter!", "Typewriter_Text_Index");
+</script>
+</body> 
+</html>

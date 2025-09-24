@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Portefølje og prosjektvisning</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="Bilder/favicon-32x32.png">
+</head>
+<body class="body_Index">
+<!-- KI Hjelp: bruker KI til å sjekke at jeg ikke har glemt noe opening/closing tags.
+ Den har også hjelpet med hvordan jeg linker style.css inn i html koden.
+ Jeg har ikke tatt og limt in kode fra KI en gang, bare skrevet selv med hjelp fra den.
+ Masse av JavaScript koden har jeg hatt masse hjelp fra KI, det er jo også fordi jeg har aldri hatt javascript før.
+ Html, CSS og JavaScript masse hjelp, men jeg har nesten ikke copy pasta en gang, jeg har prøvd å skrive alt selv for å lære meg det bedre. -->
+ <div class="text_box">
+    <h1>
+  <span id="Typewriter_Text_Index"></span><span class="Typewriter_Cursor">|</span>
+</h1>
+ 
+ <p>
+    Hallo verden! Dette kommer til å bli min portefølje og prosjektvisning!<br>
+    Her skal jeg vise frem både megselv og prosjektene jeg har jobbet med både i IT og Medieproduksjon.
+ </p>
+<h2 class="chapters">
+    Om megselv
+</h2>
+<p>
+    Jeg heter Fredrik Birkely, som du sikkert har skjønt utifra navnet på nettsiden. Her er noen raske fakta om meg:
+    <ul class="list">
+        <li>Jeg er 15 år gammel, mens jeg lager denne,17.09.2025, kommer til å bli 16 når jeg har bursdag 25.09.2025.</li>
+        <li>Jeg er elev på Gjennestadvgs.</li>
+        <li>Jeg går på linjen "IT og Medieproduksjon".</li>
+        <li>Bor i Norge.</li>
+        <li>Glad i programmering. Inspirert av min far.</li>
+        <li>Elsker katter, men ingen kjeledyr.</li>
+    </ul>
+    <p>Og dere skal få se et skolebilde av meg her:</p> <br>
+    <img class="Tilt_Img" src="Bilder/En_Veldig_Kul-Person-removebg-preview.png" alt="Skolebilde av Fredrik Birkely, ungdoms gutt, kort brunt hår, smil" width="125">
+</p>
+<h2 class="chapters">
+    Prosjekter
+</h2>
+<p>
+    Sjekk ut mine prosjekter ved å trykke på pilen under!<br>
+    <a href="prosjekter.html"><img class="prosjekt_pil" src="Bilder/right-arrow-png-31.png" alt="Pil til høyre" width="60"></a>
+    
+</p>
+</div>
+<div id="ImgZoomModal" class="Modal">
+    <div class="ModalZoom_Content">
+        <img id="ZoomedImg" class="Tilt_Img" src="" alt="">
+        <span class="CloseZoom" id="Close_Zoom">&times;</span>
+    </div>
+</div>
+<script>
+    const mainImg = document.querySelector('.text_box img');
+    const modal = document.getElementById('ImgZoomModal');
+    const zoomedImg = document.getElementById('ZoomedImg');
+    const closeBtn = document.getElementById('Close_Zoom');
+
+    mainImg.addEventListener('click', () => {
+        zoomedImg.src = mainImg.src;
+        zoomedImg.alt = mainImg.alt;
+        modal.style.display = 'flex';
+        zoomedImg.focus();
+    });
+
+    closeBtn.onclick = () => {
+        modal.style.display = 'none';
+    };
+
+    modal.onclick = (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+    };
+
+    document.addEventListener('keydown', (e) => {
+        if (modal.style.display === 'flex' && e.key === 'Escape') {
+            modal.style.display = 'none';
+        }
+    });
+</script>
+<script src="TypeWriter.js"></script>
+<script>
+typeWriterEffect("Fredrik Birkelys egen nettside!", "Typewriter_Text_Index");
+</script>
+<script src="tilt.js"></script>
+</body>
+</html>
