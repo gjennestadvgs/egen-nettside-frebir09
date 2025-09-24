@@ -2,16 +2,51 @@
 og det er flere av disse jeg fikk hjelp av KI og autofyll tingen,
 men jeg har jo gjort mine egene forandringer på flere av dem,
 brukte også KI for å lage grid og flexbox */
-.body {
+.body_Index {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     min-height: 100vh;
     margin: 0;
     text-align: center;
     background: linear-gradient(135deg, #e00606 0%, #0d5cd2 100%);
-    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    text-align: center;
+    background: linear-gradient(135deg, #e00606 0%, #0d5cd2 100%);
+    padding-top: 70px;
+}
+
+.Body_Photoshop {
+    min-height: 100vh;
+    margin: 0;
+    text-align: center;
+    background: linear-gradient(135deg, #e00606 0%, #0d5cd2 100%);
+    padding-top: 70px;
+}
+
+body, .body, .Body_Photoshop, .body_Index {
+    font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+}
+
+.main_titles, .chapters, h1, h2 {
+    color: #00ff99;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px #00ff99, 0 0 2px #000;
+}
+
+p, li, a {
+    color: #e0e0e0;
+    font-size: 1.05rem;
 }
 
 .list {
@@ -19,7 +54,7 @@ brukte også KI for å lage grid og flexbox */
 }
 
 .text_box {
-    background-color: rgb(214, 2, 129);
+    background-color: rgb(0, 0, 0);
     box-shadow: 0 8px 32px rgba(0,0,0,0.12);
     padding: 40px 32px;
     max-width: 1000px;
@@ -33,7 +68,6 @@ img {
 }
 
 .main_titles, .chapters {
-    color: #1e293b;
     font-weight: 800;
 }
 
@@ -67,7 +101,7 @@ a:focus {
     z-index: 1000;
 }
 
-.back_arrow, .home_btn {
+.back_arrow, .back_arrow_projects, .home_btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -78,10 +112,14 @@ a:focus {
     margin: 0 10px;
 }
 
-.back_arrow:hover, .home_btn:hover {
+.back_arrow:hover, .back_arrow_projects:hover, .home_btn:hover {
     background-color: rgb(255,255,255);
     padding: 1px 1px;
     transform: scale(1.1); 
+}
+
+img:hover {
+    cursor: pointer;
 }
 
 .image_row {
@@ -119,40 +157,75 @@ a:focus {
     padding: 20px;
 }
 
+.Body_Photoshop .Photoshop_Gallery {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+@media (max-width: 900px) {
+    .Body_Photoshop .Photoshop_Gallery {
+        max-width: 98vw;
+        padding: 10px;
+    }
+}
+
 .Project {
-    background: transparent;
+    background: #18181b;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    padding: 0;
+    box-shadow: 0 2px 8px rgba(0,255,153,0.15);
+    padding: 24px 16px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    border: 1px solid #00ff99;
+}
+
+.Project:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 32px rgba(0,255,153,0.3);
+    border-color: #fff;
 }
 
 .Project img {
     width: 100%;
-    max-width: 300px;
-    max-height: 220px;
     height: auto;
+    max-height: 220px;
     border-radius: 8px 8px 0 0;
     margin-bottom: 0;
     display: block;
     object-fit: cover;
-    margin-left: auto;
-    margin-right: auto;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.Project img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px #00ff99;
 }
 
 .Card_Desc {
-    background: rgb(152, 18, 164);
+    background: #000;
     padding: 12px 0;
     border-radius: 0 0 8px 8px;
     margin: 0;
     width: 100%;
-    color: #1e293b;
+    color: #00ff99;
     font-size: 1rem;
     box-shadow: none;
     box-sizing: border-box;
+    font-family: 'Fira Mono', monospace;
+    letter-spacing: 1px;
+}
+
+.Project, .Website_Card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    will-change: transform;
+    perspective: 600px;
+}
+
+.Tilt_Img {
+    transition: transform 0.2s, box-shadow 0.2s;
+    will-change: transform;
+    perspective: 600px;
 }
 
 .Modal {
@@ -169,15 +242,16 @@ a:focus {
 }
 
 .Modal_Content {
-    background: #fff;
+    background: #18181b;
     border-radius: 12px;
     display: flex;
     align-items: center;
     padding: 24px;
     max-width: 700px;
     width: 90%;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.02);
+    box-shadow: 0 8px 32px rgba(0,255,153,0.15);
     position: relative;
+    border: 1px solid #00ff99;
 }
 
 .Modal_Content img {
@@ -185,14 +259,19 @@ a:focus {
     max-height: 400px;
     border-radius: 8px;
     margin-right: 24px;
+    box-shadow: 0 4px 16px #00ff99;
 }
 
 .Modal_Desc {
     flex: 1;
-    background: #fff;
+    background: #000;
     border-radius: 8px;
     padding: 16px;
-    color: #1e293b;
+    color: #00ff99;
+    font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+    font-size: 1.05rem;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px rgba(0,255,153,0.12);
 }
 
 .Close {
@@ -204,10 +283,176 @@ a:focus {
     cursor: pointer;
 }
 
-.Project img:focus, .Project img:focus + .Card_Desc {
+.Project img:focus {
     transform: scale(1.05);
-    z-index: 1;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    z-index: 2;
+    box-shadow: 0 4px 16px #00ff99, 0 0 8px #00ff99; /* Neon green glow */
     outline: none;
-    transition: tranform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.ModalZoom_Content {
+    background: transparent;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    max-width: 90vw;
+    max-height: 90vh;
+    position: relative;
+}
+
+.ModalZoom_Content img {
+    max-width: 80vw;
+    max-height: 80vh;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}   
+
+.CloseZoom {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    padding: 0 8px;
+    z-index: 1;
+}
+
+.Website_Grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin: 40px auto;
+    max-width: 900px;
+    padding: 20px;
+}
+
+.Website_Card {
+    background: #18181b;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    padding: 24px 16px;
+    text-emphasis: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #00ff99;
+}
+
+.Website_Card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 32px rgba(0,255,153,0.2);
+    border-color: #fff;
+}
+
+.Website_Card h3 {
+    font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+    color: #00ff99;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+.Website_Card a {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #00ff99;
+    color: #18181b;
+    border-radius: 6px;
+    font-family: 'Fira Mono', monospace;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    margin-top: 8px;
+}
+
+.Website_Card a:hover {
+    background: #fff;
+    color: #00ff99;
+}
+
+.Video_Gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    padding: 24px 16px;
+    text-align: center;
+    color: #00ff99;
+    font-family: 'Fira Mono', monospace;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.Video_Card {
+    background: #18181b;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,255,153,0.15);
+    padding: 24px 16px;
+    text-align: center;
+    border: 1px solid #00ff99;
+    color: #00ff99;
+    font-family: 'Fira Mono', monospace;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.Video_Card.Placeholder {
+    opacity: 0.7;
+}
+
+.Video_Card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 32px rgba(0,255,153,0.3);
+    border-color: #fff;
+}
+
+.Video_Thumbnail img {
+    filter: grayscale(1) brightness(1.5);
+    margin-bottom: 12px;
+}
+
+.Tilt_Img {
+    transition: transform 0.2s, box-shadow 0.2s;
+    will-change: transform;
+    perspective: 600px;
+}
+
+.Typewriter_Cursor {
+    color: #00ff99;
+    font-weight: bold;
+    font-size: 2rem;
+    animation: blink 1s steps(2, start) infinite;
+    margin-left: 4px;
+}
+
+@keyframes blink {
+    to { opacity: 0; }
+}
+
+.Contact_Btn {
+    position: absolute;
+    right: 60px;
+    top: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.Contact_Btn:hover {
+    background-color: rgb(255,255,255);
+    transform: scale(1.1);
+    box-shadow: 0 0 8px #00ff99;
+}
+
+.Contact_Hacker {
+    font-family: 'Fira Mono', monospace;
+    color: #00ff99;
+    background: #18181b;
+    padding: 8px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,255,153,0.12);
+    display: inline-block;
+    margin-bottom: 12px;
 }

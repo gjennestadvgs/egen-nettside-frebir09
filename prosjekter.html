@@ -3,24 +3,38 @@
 <head>
   <meta charset="utf-8">
   <title>Fredriks prosjekter</title>
+   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="Bilder/favicon-32x32.png">
 </head>
 <body class="body">
     <div class="top_nav">
-        <a href="index.html" class="back_arrow" title="Tilbake"><img src="Bilder/Tilbake_Knapp.png" alt="Tilbake pil ikon" width="40"></a>
-      <a href="index.html" class="home_btn" title="Hjem"><img src="Bilder/Hjem_Knapp.png" alt="Tilbake til startside hus knapp" width="40"></a>
-    </div>
-    <h1 class="main_titles">
-        Mine prosjekter!
-    </h1>
+    <a href="index.html" class="back_arrow_projects" title="Tilbake">
+        <img src="Bilder/Tilbake_Knapp.png" alt="Tilbake pil ikon" width="40">
+    </a>
+    <a href="index.html" class="home_btn" title="Hjem">
+        <img src="Bilder/Hjem_Knapp.png" alt="Tilbake til startside hus knapp" width="40">
+    </a>
+    <a href="Kontakt_Meg.html" class="Contact_Btn" title="Kontakt">
+        <img src="Bilder/Phone.png" alt="Telefon ikon" width="30">
+    </a>
+</div>
+    <h1>
+  <span id="Typewriter_Text_Index"></span><span class="Typewriter_Cursor">|</span>
+</h1>
     <p>
         Her er legger jeg ut prosjektene jeg har jobbet med i IT og Medieproduksjon.
+        </p>
          <div class="image_row">
-            <a href="photoshop_prosjekter.html"><img src="Bilder/Adobe-Photoshop-Logo-2019-2020.png" width="225" alt="Adobe Photoshop logo" tabindex="0"></a>
-            <a href="nettside_prosjekter.html"><img src="Bilder/website-icon-8.png" width="225" alt="nettside verdens logo" tabindex="0"></a>
-            <a href="https://github.com/frebir09" target="_blank"><img src="Bilder/GitHub.png" width="225" alt="github logo" tabindex="0"></a>
-            <a href="video_prosjekter.html"><img src="Bilder/Lights_Camera_Action.png" width="175" alt="spill film icon" tabindex="0"></a>
+            <a href="photoshop_prosjekter.html"><img class="Tilt_Img" src="Bilder/Adobe-Photoshop-Logo-2019-2020.png" width="225" alt="Adobe Photoshop logo" tabindex="0"></a>
+            <a href="nettside_prosjekter.html"><img class="Tilt_Img" src="Bilder/website-icon-8.png" width="225" alt="nettside verdens logo" tabindex="0"></a>
+            <a href="https://github.com/frebir09" target="_blank"><img class="Tilt_Img" src="Bilder/GitHub.png" width="225" alt="github logo" tabindex="0"></a>
+            <a href="video_prosjekter.html"><img class="Tilt_Img" src="Bilder/Lights_Camera_Action.png" width="175" alt="spill film icon" tabindex="0"></a>
          </div>
-    </p>
+<script src="tilt.js"></script>
+<script src="TypeWriter.js"></script>
+<script>
+typeWriterEffect("Mine Prosjekter!", "Typewriter_Text_Index");
+</script>
 </body>
 </html>

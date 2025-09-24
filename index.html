@@ -3,16 +3,19 @@
 <head>
   <meta charset="utf-8">
   <title>Portefølje og prosjektvisning</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="Bilder/favicon-32x32.png">
 </head>
-<body class="body">
+<body class="body_Index">
 <!-- KI Hjelp: bruker KI til å sjekke at jeg ikke har glemt noe opening/closing tags.
  Den har også hjelpet med hvordan jeg linker style.css inn i html koden.
  Jeg har ikke tatt og limt in kode fra KI en gang, bare skrevet selv med hjelp fra den.-->
  <div class="text_box">
-    <h1 class="main_titles">
-    Fredrik Birkelys egen nettside!
- </h1>
+    <h1>
+  <span id="Typewriter_Text_Index"></span><span class="Typewriter_Cursor">|</span>
+</h1>
+ 
  <p>
     Hallo verden! Dette kommer til å bli min portefølje og prosjektvisning!<br>
     Her skal jeg vise frem både megselv og prosjektene jeg har jobbet med både i IT og Medieproduksjon.
@@ -30,17 +33,55 @@
         <li>Glad i programmering. Inspirert av min far.</li>
         <li>Elsker katter, men ingen kjeledyr.</li>
     </ul>
-    Og dere skal få se et skolebilde av meg her: <br>
-    <img src="Bilder/En_Veldig_Kul-Person-removebg-preview.png" alt="Skolebilde av Fredrik Birkely, ungdoms gutt, kort brunt hår, smil" width="125">
+    <p>Og dere skal få se et skolebilde av meg her:</p> <br>
+    <img class="Tilt_Img" src="Bilder/En_Veldig_Kul-Person-removebg-preview.png" alt="Skolebilde av Fredrik Birkely, ungdoms gutt, kort brunt hår, smil" width="125">
 </p>
 <h2 class="chapters">
     Prosjekter
 </h2>
 <p>
     Sjekk ut mine prosjekter ved å trykke på pilen under!<br>
-    <a href="prosjekter.html"><img class="prosjekt_pil" src="Bilder/Right_Arrow_removebg.png" alt="Pil til høyre" width="60"></a>
+    <a href="prosjekter.html"><img class="prosjekt_pil" src="Bilder/right-arrow-png-31.png" alt="Pil til høyre" width="60"></a>
     
 </p>
 </div>
+<div id="ImgZoomModal" class="Modal">
+    <div class="ModalZoom_Content">
+        <img id="ZoomedImg" class="Tilt_Img" src="" alt="">
+        <span class="CloseZoom" id="Close_Zoom">&times;</span>
+    </div>
+</div>
+<script>
+    const mainImg = document.querySelector('.text_box img');
+    const modal = document.getElementById('ImgZoomModal');
+    const zoomedImg = document.getElementById('ZoomedImg');
+    const closeBtn = document.getElementById('Close_Zoom');
+
+    mainImg.addEventListener('click', () => {
+        zoomedImg.src = mainImg.src;
+        zoomedImg.alt = mainImg.alt;
+        modal.style.display = 'flex';
+        zoomedImg.focus();
+    });
+
+    closeBtn.onclick = () => {
+        modal.style.display = 'none';
+    };
+
+    modal.onclick = (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+    };
+
+    document.addEventListener('keydown', (e) => {
+        if (modal.style.display === 'flex' && e.key === 'Escape') {
+            modal.style.display = 'none';
+        }
+    });
+</script>
+<script src="TypeWriter.js"></script>
+<script>
+typeWriterEffect("Fredrik Birkelys egen nettside!", "Typewriter_Text_Index");
+</script>
+<script src="tilt.js"></script>
 </body>
 </html>
