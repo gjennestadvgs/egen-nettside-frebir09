@@ -178,7 +178,10 @@ body.body_Games {
 }
 
 .tilt-btn {
-  margin: 24px 0 0 24px;
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 1000;
   padding: 10px 28px;
   font-size: 1.1em;
   border-radius: 12px;
@@ -192,6 +195,7 @@ body.body_Games {
   transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
   will-change: transform;
 }
+
 .tilt-btn:hover {
   background: linear-gradient(90deg, #ff0055 0%, #222 100%);
   box-shadow: 0 4px 24px #ff0055;

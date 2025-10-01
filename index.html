@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Portefølje og prosjektvisning</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="CSS/style.css">
   <link rel="icon" type="image/png" href="Bilder/favicon-32x32.png">
 </head>
 <body class="body_Index">
@@ -63,16 +63,16 @@
   <span id="TerminalText"></span><span class="Typewriter_Cursor" style="color:#00ff99;">|</span>
 </div>
 <script type="module">
-    import { setupMatrixRain } from './MatrixRain.js';
-    import { setupTerminalOverlay } from './TerminalOverlay.js';
-    import { setupPortalAnimation } from './PortalAnimation.js';
+    import { setupMatrixRain } from './JavaScript/MatrixRain.js';
+    import { setupTerminalOverlay } from './JavaScript/TerminalOverlay.js';
+    import { setupPortalAnimation } from './JavaScript/PortalAnimation.js';
 
     setupMatrixRain('.left-eye', '#MatrixCanvas');
     setupTerminalOverlay('.right-eye', '#TerminalOverlay', '#TerminalText');
     setupPortalAnimation('.NoseBtn', '#PortalCanvas', 'Games.html');
 </script>
-<script src="tilt.js"></script>
-<script src="TypeWriter.js"></script>
+<script src="JavaScript/tilt.js"></script>
+<script src="JavaScript/TypeWriter.js"></script>
 <script>
     typeWriterEffect("Fredrik Birkelys egen nettside!", "Typewriter_Text_Index");
 </script>
