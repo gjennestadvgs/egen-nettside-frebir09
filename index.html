@@ -24,12 +24,12 @@
     Her skal jeg vise frem både megselv og prosjektene jeg har jobbet med både i IT og Medieproduksjon.
  </p>
 <h2 class="chapters">
-    Om megselv
+    Om meg selv
 </h2>
 <p>
     Jeg heter Fredrik Birkely, som du sikkert har skjønt utifra navnet på nettsiden. Her er noen raske fakta om meg:
     <ul class="list">
-        <li>Jeg er 15 år gammel, mens jeg lager denne,17.09.2025, kommer til å bli 16 når jeg har bursdag 25.09.2025.</li>
+        <li>Jeg er 15 år gammel, mens jeg lager denne,17.09.2025, kommer til å bli 16 når jeg har bursdag 25.09.2025 (16 nå, let's go!).</li>
         <li>Jeg er elev på Gjennestadvgs.</li>
         <li>Jeg går på linjen "IT og Medieproduksjon".</li>
         <li>Bor i Norge.</li>
@@ -49,11 +49,32 @@
 </p>
 </div>
 <div id="ImgZoomModal" class="Modal">
-    <div class="ModalZoom_Content">
-        <img id="ZoomedImg" class="Tilt_Img" src="" alt="">
-        <span class="CloseZoom" id="Close_Zoom">&times;</span>
-    </div>
+  <div class="ModalZoom_Content">
+    <img id="ZoomedImg" class="Tilt_Img" src="" alt="">
+    <span class="CloseZoom" id="Close_Zoom">&times;</span>
+    <button class="EyeBtn left-eye"></button>
+    <button class="EyeBtn right-eye"></button>
+    <button class="NoseBtn"></button>
+  </div>
 </div>
+<canvas id="PortalCanvas" style="position:fixed; left:0; top:0; width:100vw; height:100vh; pointer-events:none; z-index:9999; display:none;"></canvas>
+<canvas id="MatrixCanvas" style="position:fixed; left:0; top:0; width:100vw; height:100vh; pointer-events:none; z-index:9998; display:none;"></canvas>
+<div id="TerminalOverlay" style="position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.95); color:#00ff99; font-family:'Fira Mono',monospace; font-size:2rem; display:none; z-index:9998; align-items:center; justify-content:center;">
+  <span id="TerminalText"></span><span class="Typewriter_Cursor" style="color:#00ff99;">|</span>
+</div>
+<script type="module">
+    import { setupMatrixRain } from './MatrixRain.js';
+    import { setupTerminalOverlay } from './TerminalOverlay.js';
+    import { setupPortalAnimation } from './PortalAnimation.js';
+
+    setupMatrixRain('.left-eye', '#MatrixCanvas');
+    setupTerminalOverlay('.right-eye', '#TerminalOverlay', '#TerminalText');
+    setupPortalAnimation('.NoseBtn', '#PortalCanvas', 'Games.html');
+</script>
+<script src="TypeWriter.js"></script>
+<script>
+    typeWriterEffect("Fredrik Birkelys egen nettside!", "Typewriter_Text_Index");
+</script>
 <script>
     const mainImg = document.querySelector('.text_box img');
     const modal = document.getElementById('ImgZoomModal');
@@ -81,10 +102,5 @@
         }
     });
 </script>
-<script src="TypeWriter.js"></script>
-<script>
-typeWriterEffect("Fredrik Birkelys egen nettside!", "Typewriter_Text_Index");
-</script>
-<script src="tilt.js"></script>
 </body>
 </html>

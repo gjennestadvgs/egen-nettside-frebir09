@@ -286,7 +286,7 @@ img:hover {
 .Project img:focus {
     transform: scale(1.05);
     z-index: 2;
-    box-shadow: 0 4px 16px #00ff99, 0 0 8px #00ff99; /* Neon green glow */
+    box-shadow: 0 4px 16px #00ff99, 0 0 8px #00ff99;
     outline: none;
     transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -456,3 +456,24 @@ img:hover {
     display: inline-block;
     margin-bottom: 12px;
 }
+
+.ModalZoom_Content img:hover,
+#ZoomedImg:hover {
+    cursor: default;
+}
+
+.EyeBtn, .NoseBtn {
+    position: absolute;
+    background: transparent;
+    border: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    border-radius: 50%;
+}
+
+.left-eye { top: 217px; left: 165px;}
+.right-eye { top: 217px; left: 245px;}
+.NoseBtn { top: 250px; left: 210px;}
