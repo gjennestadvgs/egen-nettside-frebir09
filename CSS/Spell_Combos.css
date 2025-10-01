@@ -200,3 +200,19 @@ body.body_Games {
   background: linear-gradient(90deg, #ff0055 0%, #222 100%);
   box-shadow: 0 4px 24px #ff0055;
 }
+
+@media (pointer: coarse) {
+  #spell_form label {
+    font-size: 1.5em;
+    padding: 16px 0;
+    min-width: 60px;
+    min-height: 60px;
+    display: inline-block;
+  }
+  #cast_combo_btn {
+    min-width: 80px;
+    min-height: 48px;
+    font-size: 1.3em;
+    padding: 16px 32px;
+  }
+}

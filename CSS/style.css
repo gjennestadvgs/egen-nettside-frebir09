@@ -477,3 +477,76 @@ img:hover {
 .left-eye { top: 217px; left: 165px;}
 .right-eye { top: 217px; left: 245px;}
 .NoseBtn { top: 250px; left: 210px;}
+
+.games-btn-container {
+  margin: 32px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#GamesFastBtn.tilt-btn {
+  position: static;
+  margin-left: 0;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #222 0%, #fff700 100%);
+  color: #222;
+  box-shadow: 0 2px 12px #fff700;
+}
+#GamesFastBtn.tilt-btn:hover {
+  background: linear-gradient(90deg, #fff700 0%, #222 100%);
+  color: #fff;
+  box-shadow: 0 4px 24px #fff700;
+}
+#WallyAnim {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.wally-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  height: 90vh;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+  z-index: 1;
+}
+
+@media (pointer: coarse) {
+  button, .tilt-btn, input[type="checkbox"], label {
+    min-height: 48px;
+    min-width: 48px;
+    font-size: 1.2em;
+    padding: 16px 24px;
+  }
+  .prosjekt_pil, .Tilt_Img, .EyeBtn, .NoseBtn {
+    min-width: 60px;
+    min-height: 60px;
+  }
+  .list li {
+    padding: 12px 0;
+  }
+  .ModalZoom_Content, .Modal_Content {
+    min-width: 80vw;
+    min-height: 60vh;
+    font-size: 1.2em;
+  }
+  .CloseZoom, .Close {
+    min-width: 48px;
+    min-height: 48px;
+    font-size: 2em;
+  }
+  .tilt-btn:hover, .Tilt_Img:hover {
+    box-shadow: none;
+    background: inherit;
+  }
+}
