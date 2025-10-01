@@ -3,9 +3,14 @@
 <head>
   <meta charset="utf-8">
   <title>Spell Combiner Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Spell_Combos.css">
+   <link rel="icon" type="image/png" href="Bilder/favicon-32x32.png">
 </head>
 <body class="body_Games">
+   <button class="tilt-btn" onclick="window.history.back()">
+  ← Tilbake
+</button>
   <div class="spell-combiner-container">
     <h1>Spell Combiner</h1>
     <p>Kombiner Shadow, Fire og Lightning for å slippe løs episke krefter!</p>
@@ -22,6 +27,7 @@
       <ul id="found_combos"></ul>
     </div>
   </div>
+  <script src="tilt.js"></script>
   <script src="Spells.js"></script>
 </body>
 </html>

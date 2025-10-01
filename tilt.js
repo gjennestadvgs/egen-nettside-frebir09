@@ -1,4 +1,4 @@
-document.querySelectorAll('.Website_Card, .Project, .Tilt_Img').forEach(card => {
+document.querySelectorAll('.Website_Card, .Project, .Tilt_Img, .tilt-btn').forEach(card => {
   card.addEventListener('mousemove', function(e) {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;

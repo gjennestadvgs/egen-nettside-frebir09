@@ -176,3 +176,23 @@ body.body_Games {
   font-size: 1.2em;
   text-shadow: 0 0 8px #ff0055;
 }
+
+.tilt-btn {
+  margin: 24px 0 0 24px;
+  padding: 10px 28px;
+  font-size: 1.1em;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #222 0%, #ff0055 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 12px #ff0055;
+  cursor: pointer;
+  font-family: 'Fira Mono', monospace;
+  font-weight: bold;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  will-change: transform;
+}
+.tilt-btn:hover {
+  background: linear-gradient(90deg, #ff0055 0%, #222 100%);
+  box-shadow: 0 4px 24px #ff0055;
+}
