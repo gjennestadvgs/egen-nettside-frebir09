@@ -1,3 +1,4 @@
+// Typewriter-effekt for overskrifter og tekst
 function typeWriterEffect(text, targetId, speed = 80) {
     const target = document.getElementById(targetId);
     let i = 0;

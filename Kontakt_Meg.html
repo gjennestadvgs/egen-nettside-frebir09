@@ -3,41 +3,59 @@
 <head>
     <meta charset="utf-8">
     <title>Kontakt</title>
+    <!-- Importerer monospace font for design -->
     <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Kobler til hovedstilark -->
     <link rel="stylesheet" href="CSS/style.css">
+    <!-- Favicon for fanen -->
     <link rel="icon" type="image/png" href="Bilder/favicon-32x32.png">
 </head>
 <body class="body_Index">
+    <!-- Toppnavigasjon med tilbake, hjem og kontakt-knapper -->
     <div class="top_nav">
-    <a href="prosjekter.html" class="back_arrow" title="Tilbake">
-        <img src="Bilder/Tilbake_Knapp.png" alt="Tilbake pil ikon" width="40">
-    </a>
-    <a href="index.html" class="home_btn" title="Hjem">
-        <img src="Bilder/Hjem_Knapp.png" alt="Tilbake til startside hus knapp" width="40">
-    </a>
-    <a href="Kontakt_Meg.html" class="Contact_Btn" title="Kontakt">
-        <img src="Bilder/Phone.png" alt="Telefon ikon" width="30">
-    </a>
-</div>
+        <!-- Tilbake-knapp til prosjekter -->
+        <a href="prosjekter.html" class="back_arrow" title="Tilbake">
+            <img src="Bilder/Tilbake_Knapp.png" alt="Tilbake pil ikon" width="40">
+        </a>
+        <!-- Hjem-knapp til startsiden -->
+        <a href="index.html" class="home_btn" title="Hjem">
+            <img src="Bilder/Hjem_Knapp.png" alt="Tilbake til startside hus knapp" width="40">
+        </a>
+        <!-- Kontakt-knapp (du er allerede her) -->
+        <a href="Kontakt_Meg.html" class="Contact_Btn" title="Kontakt">
+            <img src="Bilder/Phone.png" alt="Telefon ikon" width="30">
+        </a>
+    </div>
+    <!-- Hovedtekstboks med kontaktinfo -->
     <div class="text_box">
         <h1>
+            <!-- Typewriter-effekt for overskrift -->
             <span id="Typewriter_Text_Index"></span><span class="Typewriter_Cursor">|</span>
         </h1>
         <p>
+            <!-- Litt humoristisk kontaktmelding -->
             <span class="Contact_Hacker">
                 <span style="color: #00ff99;"></span> Her kan du kontakte meg, men helst ikke.
             </span>
         </p>
+        <!-- Liste med kontaktinfo -->
         <ul class="list">
             <li><span style="color: #00ff99;">E-post:</span> <a href="mailto:frebir09@gvgs.no">frebir09@gvgs.no</a></li>
             <li><span style="color: #00ff99;">Telefon:</span> No free number</li>
             <li><span style="color: #00ff99;">GitHub:</span> <a href="https://github.com/frebir09" target="_blank">Min GitHub Profil</a></li>
         </ul>
     </div>
+    <!-- Canvas for katteanimasjon -->
+    <canvas id="PixelCatCanvas" style="position:fixed; left:0; top:0; width:180px; height:120px; pointer-events:auto; z-index:2147483647; display:none;"></canvas>
+    <!-- Importerer typewriter-effekt for overskrift -->
     <script src="JavaScript/TypeWriter.js"></script>
     <script>
+        // Starter typewriter-effekt med tekst
         typeWriterEffect("Kontakt meg (helst ikke)!", "Typewriter_Text_Index");
     </script>
+    <!-- Importerer tilt-effekt for bilder/knapper -->
     <script src="JavaScript/tilt.js"></script>
+    <!-- Importerer katteanimasjon -->
+    <script src="JavaScript/PixelCat.js"></script>
 </body>
 </html>

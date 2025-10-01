@@ -2,14 +2,14 @@ let flashTriggered = false;
 let tapCount = 0;
 let tapTimer = null;
 
+// Lytter etter hemmelig tastaturkombinasjon: Shift + F
 window.addEventListener('keydown', function(e) {
-  // Secret combo: Shift + F
   if (e.shiftKey && (e.code === 'KeyF' || e.key.toLowerCase() === 'f') && !flashTriggered) {
     triggerFlash();
   }
 });
 
-// Touch gesture: triple tap on WallyAnim area
+// Touch gesture: triple tap på WallyAnim-området
 const wallyAnim = document.getElementById('WallyAnim');
 if (wallyAnim) {
   wallyAnim.addEventListener('touchstart', function() {
@@ -22,11 +22,75 @@ if (wallyAnim) {
   });
 }
 
+// Funksjon for å trigge Flash/Wally West-effekten
 function triggerFlash() {
   flashTriggered = true;
   wallyAnim.style.display = 'flex';
 
-  // Create or reuse a canvas for the flash effect
+  // Henter Wally West-gif
+  const wallyImg = wallyAnim.querySelector('.wally-center');
+  wallyImg.style.position = 'absolute';
+  wallyImg.style.top = '50%';
+  wallyImg.style.transform = 'translateY(-50%)';
+  wallyImg.style.transition = 'none';
+
+  // Startposisjon: langt til venstre
+  let imgWidth = wallyImg.width || 300; // fallback hvis width ikke er satt
+  let startLeft = -imgWidth;
+  let rightOffscreen = window.innerWidth + imgWidth;
+  let centerLeft = (window.innerWidth - imgWidth) / 2;
+
+  // Faser: 1 = fra venstre til høyre (offscreen), 2 = teleporter til venstre og slowdown til midten
+  let phase = 1;
+  let duration1 = 300; // ms, rask løp over skjermen
+  let duration2 = 500; // ms, slowdown til midten
+  let start = null;
+
+  function easeOutQuad(t) {
+    return t * (2 - t);
+  }
+
+  function animateWally(ts) {
+    if (!start) start = ts;
+    let elapsed = ts - start;
+
+    if (phase === 1) {
+      // Fase 1: løper fra venstre til høyre, helt ut av skjermen
+      let progress = Math.min(elapsed / duration1, 1);
+      let leftPos = startLeft + (rightOffscreen - startLeft) * progress;
+      wallyImg.style.left = `${leftPos}px`;
+      if (progress < 1) {
+        requestAnimationFrame(animateWally);
+      } else {
+        // Teleporterer Wally tilbake til venstre side for fase 2
+        phase = 2;
+        start = null;
+        // Skjul Wally et øyeblikk for teleport-effekt
+        wallyImg.style.visibility = 'hidden';
+        setTimeout(() => {
+          wallyImg.style.left = `${startLeft}px`; // Reset til venstre
+          wallyImg.style.visibility = 'visible';
+          requestAnimationFrame(animateWally);
+        }, 80); // kort pause for effekt
+      }
+    } else if (phase === 2) {
+      // Fase 2: fra venstre (offscreen) til midten, med slowdown
+      let progress = Math.min(elapsed / duration2, 1);
+      let eased = easeOutQuad(progress);
+      let leftPos = startLeft + (centerLeft - startLeft) * eased;
+      wallyImg.style.left = `${leftPos}px`;
+      if (progress < 1) {
+        requestAnimationFrame(animateWally);
+      } else {
+        // Plasserer nøyaktig i midten
+        wallyImg.style.left = '50%';
+        wallyImg.style.transform = 'translate(-50%, -50%)';
+      }
+    }
+  }
+  requestAnimationFrame(animateWally);
+
+  // Lager eller gjenbruker canvas for supernova-effekt
   let flashCanvas = document.getElementById('FlashImplodeCanvas');
   if (!flashCanvas) {
     flashCanvas = document.createElement('canvas');
@@ -44,10 +108,10 @@ function triggerFlash() {
   flashCanvas.height = window.innerHeight;
   flashCanvas.style.display = 'block';
 
-  // Animate the supernova implode/explode
+  // Implode/explode supernova-effekt
   let t = 0;
-  const duration = 38; // frames for implode
-  const explodeDuration = 32; // frames for explode
+  const implodeFrames = 38;
+  const explodeFrames = 32;
   function animateSupernova() {
     const ctx = flashCanvas.getContext('2d');
     ctx.clearRect(0, 0, flashCanvas.width, flashCanvas.height);
@@ -57,15 +121,14 @@ function triggerFlash() {
     let shakeY = Math.cos(t * 0.7) * 10 + Math.random() * 8 - 4;
     let r, alpha, x, y;
 
-    if (t < duration) {
-      // Implode: circle shrinks all the way to a point
-      r = Math.max(flashCanvas.width, flashCanvas.height) * (0.13 * (1 - t / duration) + 0.13 * Math.pow(1 - t / duration, 2));
-      r = Math.max(r, 2); // never less than 2px
-      alpha = 0.97 * (1 - t / duration) + 0.2;
-      x = centerX + shake * (1 - t / duration);
-      y = centerY + shakeY * (1 - t / duration);
+    if (t < implodeFrames) {
+      // Imploderer: sirkel krymper til et punkt
+      r = Math.max(flashCanvas.width, flashCanvas.height) * (0.13 * (1 - t / implodeFrames) + 0.13 * Math.pow(1 - t / implodeFrames, 2));
+      r = Math.max(r, 2);
+      alpha = 0.97 * (1 - t / implodeFrames) + 0.2;
+      x = centerX + shake * (1 - t / implodeFrames);
+      y = centerY + shakeY * (1 - t / implodeFrames);
 
-      // Draw a glowing core as it collapses
       ctx.save();
       ctx.globalAlpha = alpha;
       ctx.beginPath();
@@ -76,9 +139,8 @@ function triggerFlash() {
       ctx.fill();
       ctx.restore();
 
-      // Draw a faint ring as it collapses
       ctx.save();
-      ctx.globalAlpha = 0.2 * (1 - t / duration);
+      ctx.globalAlpha = 0.2 * (1 - t / implodeFrames);
       ctx.beginPath();
       ctx.arc(x, y, r + 40, 0, 2 * Math.PI);
       ctx.strokeStyle = '#fff';
@@ -88,15 +150,14 @@ function triggerFlash() {
       ctx.stroke();
       ctx.restore();
     } else {
-      // Explode: burst outward from a tiny point
-      let explodeT = t - duration;
-      let progress = explodeT / explodeDuration;
+      // Eksploderer: burst ut fra midten
+      let explodeT = t - implodeFrames;
+      let progress = explodeT / explodeFrames;
       r = Math.max(flashCanvas.width, flashCanvas.height) * (0.13 + progress * 0.87);
       alpha = 0.97 * (1 - progress) + 0.2 * Math.random();
       x = centerX + shake * (1 + progress * 2);
       y = centerY + shakeY * (1 + progress * 2);
 
-      // Draw the expanding burst
       ctx.save();
       ctx.globalAlpha = alpha;
       ctx.beginPath();
@@ -107,7 +168,6 @@ function triggerFlash() {
       ctx.fill();
       ctx.restore();
 
-      // Draw epic radial streaks for the explosion
       let streaks = 24;
       for (let i = 0; i < streaks; i++) {
         let angle = (i / streaks) * Math.PI * 2 + Math.random() * 0.2;
@@ -127,7 +187,7 @@ function triggerFlash() {
     }
 
     t++;
-    if (t < duration + explodeDuration) {
+    if (t < implodeFrames + explodeFrames) {
       requestAnimationFrame(animateSupernova);
     } else {
       flashCanvas.style.display = 'none';
@@ -135,8 +195,8 @@ function triggerFlash() {
     }
   }
 
-  // Wait for gif to finish, then supernova effect
+  // Venter til gif-animasjonen er ferdig før supernova-effekt
   setTimeout(() => {
     animateSupernova();
-  }, 1100); // gif duration, adjust as needed
+  }, duration1 + duration2);
 }

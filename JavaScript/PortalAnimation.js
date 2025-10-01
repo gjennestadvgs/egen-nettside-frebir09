@@ -1,7 +1,11 @@
+// Setter opp portal-animasjon når nese-knappen trykkes
 export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl = "Games.html") {
+    // Henter nese-knapp og portal-canvas
     const noseBtn = document.querySelector(noseSelector);
     const portalCanvas = document.querySelector(canvasSelector);
     const ctx = portalCanvas.getContext('2d');
+
+    // Tilpasser canvas til vindusstørrelse
     function resizePortalCanvas() {
         portalCanvas.width = window.innerWidth;
         portalCanvas.height = window.innerHeight;
@@ -11,6 +15,7 @@ export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl =
 
     let portalAnimating = false;
 
+    // Starter animasjon når nese-knappen trykkes
     noseBtn.onclick = () => {
         if (portalAnimating) return;
         portalAnimating = true;
@@ -18,7 +23,9 @@ export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl =
         animatePortal();
     };
 
+    // Hovedfunksjon for portal-animasjon
     function animatePortal() {
+        // Sentrerer koordinater og setter startverdier
         let centerX = portalCanvas.width / 2;
         let centerY = portalCanvas.height / 2;
         let redX = 100, blueX = portalCanvas.width - 100;
@@ -36,10 +43,13 @@ export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl =
         let pulseDir = 1;
         let flashAlpha = 0;
 
+        // Første fase: røde og blå sirkler glir inn mot midten
         function slideIn() {
             ctx.clearRect(0, 0, portalCanvas.width, portalCanvas.height);
             redX += (redTarget - redX) / (slideSteps - count + 1);
             blueX += (blueTarget - blueX) / (slideSteps - count + 1);
+
+            // Tegner rød sirkel
             ctx.save();
             ctx.beginPath();
             ctx.arc(redX, y, 40, 0, 2 * Math.PI);
@@ -49,6 +59,8 @@ export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl =
             ctx.globalAlpha = 0.9;
             ctx.fill();
             ctx.restore();
+
+            // Tegner blå sirkel
             ctx.save();
             ctx.beginPath();
             ctx.arc(blueX, y, 40, 0, 2 * Math.PI);
@@ -58,6 +70,7 @@ export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl =
             ctx.globalAlpha = 0.9;
             ctx.fill();
             ctx.restore();
+
             count++;
             if (count < slideSteps) {
                 requestAnimationFrame(slideIn);
@@ -67,6 +80,7 @@ export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl =
             }
         }
 
+        // Andre fase: sirkler spinner rundt hverandre med spor
         function spinCircles() {
             ctx.clearRect(0, 0, portalCanvas.width, portalCanvas.height);
             let spinRadius = 80;
@@ -76,9 +90,13 @@ export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl =
             let redPy = centerY + Math.sin(redAngle) * spinRadius;
             let bluePx = centerX + Math.cos(blueAngle) * spinRadius;
             let bluePy = centerY + Math.sin(blueAngle) * spinRadius;
+
+            // Legger til spor for animasjon
             trailPoints.push({ x: redPx, y: redPy, color: '#ff0033' });
             trailPoints.push({ x: bluePx, y: bluePy, color: '#0066ff' });
             if (trailPoints.length > 80) trailPoints.splice(0, trailPoints.length - 80);
+
+            // Tegner sporene
             for (let i = 0; i < trailPoints.length; i++) {
                 ctx.beginPath();
                 ctx.arc(trailPoints[i].x, trailPoints[i].y, 10, 0, 2 * Math.PI);
@@ -89,6 +107,8 @@ export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl =
                 ctx.fill();
                 ctx.globalAlpha = 1;
             }
+
+            // Tegner sirkler
             ctx.save();
             ctx.beginPath();
             ctx.arc(redPx, redPy, 40, 0, 2 * Math.PI);
@@ -98,6 +118,7 @@ export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl =
             ctx.globalAlpha = 0.9;
             ctx.fill();
             ctx.restore();
+
             ctx.save();
             ctx.beginPath();
             ctx.arc(bluePx, bluePy, 40, 0, 2 * Math.PI);
@@ -107,6 +128,8 @@ export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl =
             ctx.globalAlpha = 0.9;
             ctx.fill();
             ctx.restore();
+
+            // Puls-effekt på ringen rundt
             if (trailPoints.length >= 80) {
                 pulse += pulseDir * 0.05;
                 if (pulse > 1.2) pulseDir = -1;
@@ -123,6 +146,7 @@ export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl =
                 ctx.globalAlpha = 1;
                 ctx.restore();
             }
+
             angle += Math.PI / 20;
             count++;
             if (count < spinSteps) {
@@ -134,6 +158,7 @@ export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl =
             }
         }
 
+        // Tredje fase: sirkler kombineres og lager portal
         function combineCircles() {
             shakeAmount = Math.max(0, 20 - count / 2);
             let shakeX = centerX + (Math.random() - 0.5) * shakeAmount;
@@ -142,6 +167,8 @@ export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl =
             let shrinkRadius = 80 - (count * 2);
             if (shrinkRadius < 0) shrinkRadius = 0;
             let pulseR = shrinkRadius + 40 + Math.sin(count * 0.3) * 8;
+
+            // Tegner portal med puls og shake
             ctx.save();
             ctx.beginPath();
             ctx.arc(shakeX, shakeY, pulseR, 0, 2 * Math.PI);
@@ -151,6 +178,7 @@ export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl =
             ctx.globalAlpha = 0.9 + Math.sin(count * 0.2) * 0.1;
             ctx.fill();
             ctx.restore();
+
             count++;
             if (count < combineSteps) {
                 requestAnimationFrame(combineCircles);
@@ -160,6 +188,7 @@ export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl =
             }
         }
 
+        // Siste fase: portal eksploderer og siden redirectes
         function explodePortal(cx, cy) {
             let r = 60;
             let maxR = Math.max(portalCanvas.width, portalCanvas.height) * 1.2;
@@ -178,6 +207,8 @@ export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl =
                 ctx.shadowBlur = 180;
                 ctx.fill();
                 ctx.restore();
+
+                // Hvit flash-effekt
                 if (flashAlpha > 0) {
                     ctx.save();
                     ctx.globalAlpha = flashAlpha;
@@ -186,9 +217,11 @@ export function setupPortalAnimation(noseSelector, canvasSelector, redirectUrl =
                     ctx.restore();
                     flashAlpha -= 0.08;
                 }
+
                 r += 60;
                 alpha = Math.max(0, alpha - 0.04);
                 shake = Math.max(0, shake - 2);
+
                 if (r < maxR) {
                     requestAnimationFrame(explode);
                 } else {

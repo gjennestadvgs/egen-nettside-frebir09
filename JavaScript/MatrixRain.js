@@ -1,24 +1,41 @@
+// Setter opp Matrix Rain-effekten på canvas når venstre øye-knappen trykkes
 export function setupMatrixRain(leftEyeSelector, canvasSelector) {
+    // Henter venstre øye-knapp og Matrix-canvas
     const leftEyeBtn = document.querySelector(leftEyeSelector);
     const matrixCanvas = document.querySelector(canvasSelector);
     const mtxCtx = matrixCanvas.getContext('2d');
+
+    // Starter Matrix Rain når knappen trykkes
     leftEyeBtn.onclick = () => {
+        // Tilpasser canvas til vindusstørrelse
         matrixCanvas.width = window.innerWidth;
         matrixCanvas.height = window.innerHeight;
         matrixCanvas.style.display = 'block';
+
+        // Beregner antall kolonner og initialiserer "drops" for regneffekt
         let columns = Math.floor(matrixCanvas.width / 18);
         let drops = Array(columns).fill(1);
+
+        // Tegnene som brukes i Matrix-effekten
         let chars = 'abcdefghijklmnopqrstuvwxyz0123456789@#$%&';
+
+        // Variabler for animasjonstilstand
         let running = true;
         let errorPhase = false;
         let errorBlink = true;
         let crumblePhase = false;
         let crumbleLetters = [];
+
+        // Hoved-tegnefunksjon for Matrix-effekten
         function drawMatrix() {
+            // Tegner bakgrunn med svak gjennomsiktighet for "regn"-effekt
             mtxCtx.fillStyle = 'rgba(0,0,0,0.18)';
             mtxCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+            // Vanlig Matrix-regn (før error/crumble)
             if (!errorPhase && !crumblePhase) {
                 for (let i = 0; i < drops.length; i++) {
+                    // Velger tilfeldig tegn og fontstørrelse
                     let text = chars[Math.floor(Math.random() * chars.length)];
                     let fontSize = 18 + Math.floor(Math.random() * 8);
                     mtxCtx.font = `${fontSize}px Fira Mono, monospace`;
@@ -27,10 +44,13 @@ export function setupMatrixRain(leftEyeSelector, canvasSelector) {
                     mtxCtx.fillStyle = '#00ff99';
                     mtxCtx.fillText(text, i * 18, drops[i] * fontSize);
                     mtxCtx.shadowBlur = 0;
+                    // Tilfeldig restart av regndråpe
                     if (Math.random() > 0.975) drops[i] = 0;
                     drops[i]++;
                 }
             }
+
+            // Error-fase: Blinker "ERROR" i midten
             if (errorPhase && !crumblePhase) {
                 if (errorBlink) {
                     mtxCtx.save();
@@ -43,6 +63,8 @@ export function setupMatrixRain(leftEyeSelector, canvasSelector) {
                     mtxCtx.restore();
                 }
             }
+
+            // Crumble-fase: Bokstaver faller og spinner ut
             if (crumblePhase) {
                 for (let i = 0; i < crumbleLetters.length; i++) {
                     let letter = crumbleLetters[i];
@@ -56,11 +78,13 @@ export function setupMatrixRain(leftEyeSelector, canvasSelector) {
                     mtxCtx.shadowBlur = 8;
                     mtxCtx.fillText(letter.char, 0, 0);
                     mtxCtx.restore();
+                    // Oppdaterer posisjon og utseende for hver bokstav
                     letter.y += letter.speedY;
                     letter.x += letter.speedX;
                     letter.angle += letter.spin;
                     letter.alpha -= 0.01;
                 }
+                // Spesialeffekt for "ERROR"-bokstaver
                 for (let i = 0; i < 5; i++) {
                     let letter = crumbleLetters[crumbleLetters.length - 5 + i];
                     if (letter) {
@@ -81,12 +105,19 @@ export function setupMatrixRain(leftEyeSelector, canvasSelector) {
                     }
                 }
             }
+
+            // Fortsetter animasjonen så lenge effekten kjører
             if (running || errorPhase || crumblePhase) requestAnimationFrame(drawMatrix);
         }
+
+        // Starter Matrix-animasjonen
         drawMatrix();
+
+        // Etter 3 sekunder: starter error-fase
         setTimeout(() => {
             errorPhase = true;
             let blinkCount = 0;
+            // Blinker "ERROR" 7 ganger
             let blinkInterval = setInterval(() => {
                 errorBlink = !errorBlink;
                 blinkCount++;
@@ -97,6 +128,7 @@ export function setupMatrixRain(leftEyeSelector, canvasSelector) {
                     errorPhase = false;
                     running = false;
                     crumbleLetters = [];
+                    // Lager bokstaver som skal "crumble" ut
                     for (let i = 0; i < columns; i++) {
                         let text = chars[Math.floor(Math.random() * chars.length)];
                         let fontSize = 18 + Math.floor(Math.random() * 8);
@@ -113,6 +145,7 @@ export function setupMatrixRain(leftEyeSelector, canvasSelector) {
                             alpha: 1
                         });
                     }
+                    // Legger til "ERROR"-bokstaver som crumbles
                     let errorText = "ERROR";
                     let errorX = matrixCanvas.width / 2 - 120;
                     let errorY = matrixCanvas.height / 2;
@@ -130,6 +163,7 @@ export function setupMatrixRain(leftEyeSelector, canvasSelector) {
                             alpha: 1
                         });
                     }
+                    // Skjuler canvas etter crumble-effekt
                     setTimeout(() => {
                         matrixCanvas.style.display = 'none';
                         mtxCtx.clearRect(0, 0, matrixCanvas.width, matrixCanvas.height);

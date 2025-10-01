@@ -1,71 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- KI Hjelp: Brukte KI til å sjekke at jeg ikke har glemt noen tags -->
   <meta charset="utf-8">
   <title>Portefølje og prosjektvisning</title>
+  <!-- Importerer font fra Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Kobler til stilark -->
   <link rel="stylesheet" href="CSS/style.css">
+  <!-- Favicon for nettleserfanen -->
   <link rel="icon" type="image/png" href="Bilder/favicon-32x32.png">
 </head>
 <body class="body_Index">
-<!-- KI Hjelp: bruker KI til å sjekke at jeg ikke har glemt noe opening/closing tags.
- Den har også hjelpet med hvordan jeg linker style.css inn i html koden.
- Jeg har ikke tatt og limt in kode fra KI en gang, bare skrevet selv med hjelp fra den.
- Masse av JavaScript koden har jeg hatt masse hjelp fra KI, det er jo også fordi jeg har aldri hatt javascript før.
- Html, CSS og JavaScript masse hjelp, men jeg har nesten ikke copy pasta en gang, jeg har prøvd å skrive alt selv for å lære meg det bedre.
- CoPilot er en veldig god ting synes jeg. Øyne og nese knappen og hele games.html/Spells.js/Spell_Combos.css er nesten 100% KI, men jeg har jo lagd mesteparten av ideene, det var bare litt for mye skriving. -->
- <div class="text_box">
+  <!-- Hovedtekstboks med info om meg -->
+  <div class="text_box">
     <h1>
-  <span id="Typewriter_Text_Index"></span><span class="Typewriter_Cursor">|</span>
-</h1>
- 
- <p>
-    Hallo verden! Dette kommer til å bli min portefølje og prosjektvisning!<br>
-    Her skal jeg vise frem både megselv og prosjektene jeg har jobbet med både i IT og Medieproduksjon.
- </p>
-<h2 class="chapters">
-    Om meg selv
-</h2>
-<p>
-    Jeg heter Fredrik Birkely, som du sikkert har skjønt utifra navnet på nettsiden. Her er noen raske fakta om meg:
-    <ul class="list">
+      <!-- Typewriter-effekt for overskrift -->
+      <span id="Typewriter_Text_Index"></span><span class="Typewriter_Cursor">|</span>
+    </h1>
+    <p>
+      <!-- Kort introduksjon -->
+      Hallo verden! Dette kommer til å bli min portefølje og prosjektvisning!<br>
+      Her skal jeg vise frem både megselv og prosjektene jeg har jobbet med både i IT og Medieproduksjon.
+    </p>
+    <h2 class="chapters">
+      Om meg selv
+    </h2>
+    <p>
+      <!-- Fakta om meg -->
+      Jeg heter Fredrik Birkely, som du sikkert har skjønt utifra navnet på nettsiden. Her er noen raske fakta om meg:
+      <ul class="list">
         <li>Jeg er 15 år gammel, mens jeg starter å lage denne, 17.09.2025 (Jeg har blitt 16 i ettertid, 25.09.2025).</li>
         <li>Jeg er elev på Gjennestadvgs.</li>
         <li>Jeg går på linjen "IT og Medieproduksjon".</li>
         <li>Bor i Norge.</li>
         <li>Glad i programmering. Inspirert av min far.</li>
         <li>Elsker katter, men ingen kjeledyr.</li>
-    </ul>
-    <p>Og dere skal få se et skolebilde av meg her:</p> <br>
-    <img class="Tilt_Img" src="Bilder/En_Veldig_Kul-Person-removebg-preview.png" alt="Skolebilde av Fredrik Birkely, ungdoms gutt, kort brunt hår, smil" width="125">
-</p>
-<h2 class="chapters">
-    Prosjekter
-</h2>
-<p>
-    Sjekk ut mine prosjekter ved å trykke på pilen under!<br>
-    <a href="prosjekter.html"><img class="prosjekt_pil" src="Bilder/right-arrow-png-31.png" alt="Pil til høyre" width="60"></a>
-    
-</p>
-</div>
-<div id="ImgZoomModal" class="Modal">
-  <div class="ModalZoom_Content">
-    <img id="ZoomedImg" class="Tilt_Img" src="" alt="">
-    <span class="CloseZoom" id="Close_Zoom">&times;</span>
-    <button class="EyeBtn left-eye"></button>
-    <button class="EyeBtn right-eye"></button>
-    <button class="NoseBtn"></button>
+      </ul>
+      <p>Og dere skal få se et skolebilde av meg her:</p> <br>
+      <!-- Skolebilde med tilt-effekt -->
+      <img class="Tilt_Img" src="Bilder/En_Veldig_Kul-Person-removebg-preview.png" alt="Skolebilde av Fredrik Birkely, ungdoms gutt, kort brunt hår, smil" width="125">
+    </p>
+    <h2 class="chapters">
+      Prosjekter
+    </h2>
+    <p>
+      <!-- Link til prosjekter -->
+      Sjekk ut mine prosjekter ved å trykke på pilen under!<br>
+      <a href="prosjekter.html"><img class="prosjekt_pil" src="Bilder/right-arrow-png-31.png" alt="Pil til høyre" width="60"></a>
+    </p>
   </div>
-</div>
-<canvas id="PortalCanvas" style="position:fixed; left:0; top:0; width:100vw; height:100vh; pointer-events:none; z-index:9999; display:none;"></canvas>
-<canvas id="MatrixCanvas" style="position:fixed; left:0; top:0; width:100vw; height:100vh; pointer-events:none; z-index:9998; display:none;"></canvas>
-<div id="TerminalOverlay" style="position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.95); color:#00ff99; font-family:'Fira Mono',monospace; font-size:2rem; display:none; z-index:9998; align-items:center; justify-content:center;">
-  <span id="TerminalText"></span><span class="Typewriter_Cursor" style="color:#00ff99;">|</span>
-</div>
-<div id="WallyAnim" style="display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:99999; align-items:center; justify-content:center;">
-  <img src="Gifs/WALLY_WEST.gif" alt="Wally West" class="wally-center">
-</div>
-<script type="module">
+  <!-- Modal for bildezoom -->
+  <div id="ImgZoomModal" class="Modal">
+    <div class="ModalZoom_Content">
+      <img id="ZoomedImg" class="Tilt_Img" src="" alt="">
+      <span class="CloseZoom" id="Close_Zoom">&times;</span>
+      <button class="EyeBtn left-eye"></button>
+      <button class="EyeBtn right-eye"></button>
+      <button class="NoseBtn"></button>
+    </div>
+  </div>
+  <!-- Diverse canvas for effekter -->
+  <canvas id="PortalCanvas" style="position:fixed; left:0; top:0; width:100vw; height:100vh; pointer-events:none; z-index:9999; display:none;"></canvas>
+  <canvas id="MatrixCanvas" style="position:fixed; left:0; top:0; width:100vw; height:100vh; pointer-events:none; z-index:9998; display:none;"></canvas>
+  <canvas id="PixelCatCanvas" style="position:fixed; left:0; top:0; width:180px; height:120px; pointer-events:auto; z-index:2147483647; display:none;"></canvas>
+  <!-- Terminal overlay for animasjon -->
+  <div id="TerminalOverlay" style="position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.95); color:#00ff99; font-family:'Fira Mono',monospace; font-size:2rem; display:none; z-index:9998; align-items:center; justify-content:center;">
+    <span id="TerminalText"></span><span class="Typewriter_Cursor" style="color:#00ff99;">|</span>
+  </div>
+  <!-- Wally West animasjon -->
+  <div id="WallyAnim" style="display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:99999; align-items:center; justify-content:center;">
+    <img src="Gifs/WALLY_WEST.gif" alt="Wally West" class="wally-center">
+  </div>
+  <!-- Importerer moduler for diverse effekter -->
+  <script type="module">
     import { setupMatrixRain } from './JavaScript/MatrixRain.js';
     import { setupTerminalOverlay } from './JavaScript/TerminalOverlay.js';
     import { setupPortalAnimation } from './JavaScript/PortalAnimation.js';
@@ -73,39 +81,45 @@
     setupMatrixRain('.left-eye', '#MatrixCanvas');
     setupTerminalOverlay('.right-eye', '#TerminalOverlay', '#TerminalText');
     setupPortalAnimation('.NoseBtn', '#PortalCanvas', 'Games.html');
-</script>
-<script src="JavaScript/tilt.js"></script>
-<script src="JavaScript/TypeWriter.js"></script>
-<script>
+  </script>
+  <!-- Tilt-effekt på bilder -->
+  <script src="JavaScript/tilt.js"></script>
+  <!-- Typewriter-effekt for tekst -->
+  <script src="JavaScript/TypeWriter.js"></script>
+  <script>
     typeWriterEffect("Fredrik Birkelys egen nettside!", "Typewriter_Text_Index");
-</script>
-<script>
+  </script>
+  <!-- Modal funksjonalitet for bildezoom -->
+  <script>
     const mainImg = document.querySelector('.text_box img');
     const modal = document.getElementById('ImgZoomModal');
     const zoomedImg = document.getElementById('ZoomedImg');
     const closeBtn = document.getElementById('Close_Zoom');
 
     mainImg.addEventListener('click', () => {
-        zoomedImg.src = mainImg.src;
-        zoomedImg.alt = mainImg.alt;
-        modal.style.display = 'flex';
-        zoomedImg.focus();
+      zoomedImg.src = mainImg.src;
+      zoomedImg.alt = mainImg.alt;
+      modal.style.display = 'flex';
+      zoomedImg.focus();
     });
 
     closeBtn.onclick = () => {
-        modal.style.display = 'none';
+      modal.style.display = 'none';
     };
 
     modal.onclick = (e) => {
-        if (e.target === modal) modal.style.display = 'none';
+      if (e.target === modal) modal.style.display = 'none';
     };
 
     document.addEventListener('keydown', (e) => {
-        if (modal.style.display === 'flex' && e.key === 'Escape') {
-            modal.style.display = 'none';
-        }
+      if (modal.style.display === 'flex' && e.key === 'Escape') {
+        modal.style.display = 'none';
+      }
     });
-</script>
-<script src="JavaScript/The_Flash.js"></script>
+  </script>
+  <!-- Flash/Wally West animasjon -->
+  <script src="JavaScript/The_Flash.js"></script>
+  <!-- Katte-animasjon -->
+  <script src="JavaScript/PixelCat.js"></script>
 </body>
 </html>

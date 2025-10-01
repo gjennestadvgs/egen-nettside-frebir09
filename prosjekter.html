@@ -3,38 +3,67 @@
 <head>
   <meta charset="utf-8">
   <title>Fredriks prosjekter</title>
-   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Importerer monospace font for design -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Kobler til hovedstilark -->
   <link rel="stylesheet" href="CSS/style.css">
+  <!-- Favicon for fanen -->
   <link rel="icon" type="image/png" href="Bilder/favicon-32x32.png">
 </head>
 <body class="body">
-    <div class="top_nav">
+  <!-- Toppnavigasjon med tilbake, hjem og kontakt-knapper -->
+  <div class="top_nav">
+    <!-- Tilbake-knapp til forsiden -->
     <a href="index.html" class="back_arrow_projects" title="Tilbake">
-        <img src="Bilder/Tilbake_Knapp.png" alt="Tilbake pil ikon" width="40">
+      <img src="Bilder/Tilbake_Knapp.png" alt="Tilbake pil ikon" width="40">
     </a>
+    <!-- Hjem-knapp til startsiden -->
     <a href="index.html" class="home_btn" title="Hjem">
-        <img src="Bilder/Hjem_Knapp.png" alt="Tilbake til startside hus knapp" width="40">
+      <img src="Bilder/Hjem_Knapp.png" alt="Tilbake til startside hus knapp" width="40">
     </a>
+    <!-- Kontakt-knapp -->
     <a href="Kontakt_Meg.html" class="Contact_Btn" title="Kontakt">
-        <img src="Bilder/Phone.png" alt="Telefon ikon" width="30">
+      <img src="Bilder/Phone.png" alt="Telefon ikon" width="30">
     </a>
-</div>
-    <h1>
-  <span id="Typewriter_Text_Index"></span><span class="Typewriter_Cursor">|</span>
-</h1>
-    <p>
-        Her er legger jeg ut prosjektene jeg har jobbet med i IT og Medieproduksjon.
-        </p>
-         <div class="image_row">
-            <a href="photoshop_prosjekter.html"><img class="Tilt_Img" src="Bilder/Adobe-Photoshop-Logo-2019-2020.png" width="225" alt="Adobe Photoshop logo" tabindex="0"></a>
-            <a href="nettside_prosjekter.html"><img class="Tilt_Img" src="Bilder/website-icon-8.png" width="225" alt="nettside verdens logo" tabindex="0"></a>
-            <a href="https://github.com/frebir09" target="_blank"><img class="Tilt_Img" src="Bilder/GitHub.png" width="225" alt="github logo" tabindex="0"></a>
-            <a href="video_prosjekter.html"><img class="Tilt_Img" src="Bilder/Lights_Camera_Action.png" width="175" alt="spill film icon" tabindex="0"></a>
-         </div>
-<script src="JavaScript/tilt.js"></script>
-<script src="JavaScript/TypeWriter.js"></script>
-<script>
-typeWriterEffect("Mine Prosjekter!", "Typewriter_Text_Index");
-</script>
+  </div>
+  <!-- Typewriter-effekt for overskrift -->
+  <h1>
+    <span id="Typewriter_Text_Index"></span><span class="Typewriter_Cursor">|</span>
+  </h1>
+  <!-- Kort beskrivelse av siden -->
+  <p>
+    Her legger jeg ut prosjektene jeg har jobbet med i IT og Medieproduksjon.
+  </p>
+  <!-- Rad med bilder/ikoner for ulike prosjektkategorier -->
+  <div class="image_row">
+    <!-- Photoshop-prosjekter -->
+    <a href="photoshop_prosjekter.html">
+      <img class="Tilt_Img" src="Bilder/Adobe-Photoshop-Logo-2019-2020.png" width="225" alt="Adobe Photoshop logo" tabindex="0">
+    </a>
+    <!-- Nettside-prosjekter -->
+    <a href="nettside_prosjekter.html">
+      <img class="Tilt_Img" src="Bilder/website-icon-8.png" width="225" alt="nettside verdens logo" tabindex="0">
+    </a>
+    <!-- GitHub-profil -->
+    <a href="https://github.com/frebir09" target="_blank">
+      <img class="Tilt_Img" src="Bilder/GitHub.png" width="225" alt="github logo" tabindex="0">
+    </a>
+    <!-- Video-prosjekter -->
+    <a href="video_prosjekter.html">
+      <img class="Tilt_Img" src="Bilder/Lights_Camera_Action.png" width="175" alt="spill film icon" tabindex="0">
+    </a>
+  </div>
+  <!-- Canvas for katteanimasjon -->
+  <canvas id="PixelCatCanvas" style="position:fixed; left:0; top:0; width:180px; height:120px; pointer-events:auto; z-index:2147483647; display:none;"></canvas>
+  <!-- Importerer tilt-effekt for bilder/knapper -->
+  <script src="JavaScript/tilt.js"></script>
+  <!-- Importerer typewriter-effekt for overskrift -->
+  <script src="JavaScript/TypeWriter.js"></script>
+  <!-- Importerer katteanimasjon -->
+  <script src="JavaScript/PixelCat.js"></script>
+  <script>
+    // Starter typewriter-effekt med tekst
+    typeWriterEffect("Mine Prosjekter!", "Typewriter_Text_Index");
+  </script>
 </body>
 </html>

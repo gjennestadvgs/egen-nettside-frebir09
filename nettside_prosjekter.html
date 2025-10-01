@@ -3,37 +3,59 @@
 <head>
   <meta charset="utf-8">
   <title>Nettside_prosjekter</title>
-   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Importerer monospace font for design -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Kobler til hovedstilark -->
   <link rel="stylesheet" href="CSS/style.css">
+  <!-- Favicon for fanen -->
   <link rel="icon" type="image/png" href="Bilder/favicon-32x32.png">
 </head>
 <body class="body">
-   <div class="top_nav">
-        <a href="prosjekter.html" class="back_arrow" title="Tilbake"><img src="Bilder/Tilbake_Knapp.png" alt="Tilbake pil ikon" width="40"></a>
-      <a href="index.html" class="home_btn" title="Hjem"><img src="Bilder/Hjem_Knapp.png" alt="Tilbake til startside hus knapp" width="40"></a>
-      <a href="Kontakt_Meg.html" class="Contact_Btn" title="Kontakt">
-        <img src="Bilder/Phone.png" alt="Telefon ikon" width="30">
+  <!-- Toppnavigasjon med tilbake, hjem og kontakt-knapper -->
+  <div class="top_nav">
+    <!-- Tilbake-knapp til prosjekter -->
+    <a href="prosjekter.html" class="back_arrow" title="Tilbake">
+      <img src="Bilder/Tilbake_Knapp.png" alt="Tilbake pil ikon" width="40">
     </a>
-    </div>
-    <h1>
-  <span id="Typewriter_Text_Index"></span><span class="Typewriter_Cursor">|</span>
-</h1>
-<p>Her er mine nettside prosjekter!</p>
+    <!-- Hjem-knapp til startsiden -->
+    <a href="index.html" class="home_btn" title="Hjem">
+      <img src="Bilder/Hjem_Knapp.png" alt="Tilbake til startside hus knapp" width="40">
+    </a>
+    <!-- Kontakt-knapp -->
+    <a href="Kontakt_Meg.html" class="Contact_Btn" title="Kontakt">
+      <img src="Bilder/Phone.png" alt="Telefon ikon" width="30">
+    </a>
+  </div>
+  <!-- Typewriter-effekt for overskrift -->
+  <h1>
+    <span id="Typewriter_Text_Index"></span><span class="Typewriter_Cursor">|</span>
+  </h1>
+  <!-- Kort beskrivelse av siden -->
+  <p>Her er mine nettside prosjekter!</p>
+  <!-- Grid med nettsideprosjekter -->
   <div class="Website_Grid">
+    <!-- Kort for Norway Travel Guide -->
     <div class="Website_Card">
       <h3>Norway Travel Guide</h3>
       <a href="Prosjekter/Norway_travel_guide.html" target="_blank">Åpne nettside!</a>
     </div>
+    <!-- Kort for Fredrik's Pizza -->
     <div class="Website_Card">
       <h3>Fredrik's Pizza</h3>
       <a href="Prosjekter/Fredrik's_Pizza.html" target="_blank">Åpne nettside!</a>
     </div>
   </div>
-
-<script src="JavaScript/tilt.js"></script>
-<script src="JavaScript/TypeWriter.js"></script>
-<script>
-typeWriterEffect("Mine Nettsider!", "Typewriter_Text_Index");
-</script>
+  <!-- Canvas for katteanimasjon -->
+  <canvas id="PixelCatCanvas" style="position:fixed; left:0; top:0; width:180px; height:120px; pointer-events:auto; z-index:2147483647; display:none;"></canvas>
+  <!-- Importerer tilt-effekt for bilder/knapper -->
+  <script src="JavaScript/tilt.js"></script>
+  <!-- Importerer typewriter-effekt for overskrift -->
+  <script src="JavaScript/TypeWriter.js"></script>
+  <script>
+    // Starter typewriter-effekt med tekst
+    typeWriterEffect("Mine Nettsider!", "Typewriter_Text_Index");
+  </script>
+  <!-- Importerer katteanimasjon -->
+  <script src="JavaScript/PixelCat.js"></script>
 </body> 
 </html>

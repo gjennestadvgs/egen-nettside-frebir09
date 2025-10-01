@@ -1,9 +1,14 @@
+// Setter opp terminal-overlay når høyre øye-knappen trykkes
 export function setupTerminalOverlay(rightEyeSelector, overlaySelector, textSelector) {
+    // Henter høyre øye-knapp, overlay og tekstområde
     const rightEyeBtn = document.querySelector(rightEyeSelector);
     const terminalOverlay = document.querySelector(overlaySelector);
     const terminalText = document.querySelector(textSelector);
+
+    // Starter animasjonen når knappen trykkes
     rightEyeBtn.onclick = () => {
         terminalOverlay.style.display = 'flex';
+        // Stegvis tekst for terminalen
         let steps = [
             "ACCESS GRANTED\nAccessing user files...",
             "Gathering private info...",
@@ -15,6 +20,8 @@ export function setupTerminalOverlay(rightEyeSelector, overlaySelector, textSele
         ];
         let i = 0;
         terminalText.textContent = '';
+
+        // Skriver ut hvert steg med typewriter-effekt
         function typeStep(stepIdx) {
             let msg = steps[stepIdx];
             let j = 0;
@@ -24,6 +31,7 @@ export function setupTerminalOverlay(rightEyeSelector, overlaySelector, textSele
                     j++;
                     setTimeout(typeChar, 40);
                 } else {
+                    // Viser spinner for steg 2-4
                     if (stepIdx === 1 || stepIdx === 2 || stepIdx === 3) {
                         let spinner = ['|', '/', '-', '\\'];
                         let spinIdx = 0;
@@ -42,6 +50,7 @@ export function setupTerminalOverlay(rightEyeSelector, overlaySelector, textSele
                     } else if (stepIdx + 1 < steps.length) {
                         setTimeout(() => typeStep(stepIdx + 1), 700);
                     } else {
+                        // Skjuler overlay til slutt
                         setTimeout(() => {
                             terminalOverlay.style.display = 'none';
                             terminalText.textContent = '';

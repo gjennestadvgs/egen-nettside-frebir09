@@ -3,11 +3,15 @@
 <head>
   <meta charset="utf-8">
   <title>Spell Combiner Game</title>
+  <!-- Importerer monospace font for spilldesignet -->
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Kobler til CSS for Spell Combiner-spillet -->
   <link rel="stylesheet" href="CSS/Spell_Combos.css">
+  <!-- Favicon for spillfanen -->
   <link rel="icon" type="image/png" href="Bilder/favicon-32x32.png">
 </head>
 <body class="body_Games">
+  <!-- Tilbake-knapp: Går tilbake til forrige side eller index.html hvis ingen historikk -->
   <button class="tilt-btn" onclick="
     if (window.history.length > 1) {
       window.history.back();
@@ -17,23 +21,36 @@
   ">
     ← Tilbake
   </button>
+  <!-- Hovedcontainer for Spell Combiner-spillet -->
   <div class="spell-combiner-container">
     <h1>Spell Combiner</h1>
+    <!-- Kort beskrivelse av spillet -->
     <p>Kombiner Shadow, Fire og Lightning for å slippe løs episke krefter!</p>
+    <!-- Skjema for å velge spells -->
     <form id="spell_form">
       <label><input type="checkbox" name="spell" value="fire">🔥 Fire</label>
       <label><input type="checkbox" name="spell" value="lightning">⚡ Lightning</label>
       <label><input type="checkbox" name="spell" value="shadow">🌑 Shadow</label>
     </form>
+    <!-- Knapp for å kombinere valgte spells -->
     <button id="cast_combo_btn">Kombiner!</button>
+    <!-- Her vises animasjon for spells -->
     <div id="spell_anim"></div>
+    <!-- Her vises resultatmelding for spells -->
     <div id="spell_msg"></div>
+    <!-- Liste over oppdagede kombinasjoner -->
     <div id="combo_list">
       <h3>Oppdagede kombinasjoner:</h3>
       <ul id="found_combos"></ul>
     </div>
   </div>
+  <!-- Canvas for katteanimasjon (PixelCat) -->
+  <canvas id="PixelCatCanvas" style="position:fixed; left:0; top:0; width:180px; height:120px; pointer-events:auto; z-index:2147483647; display:none;"></canvas>
+  <!-- Importerer tilt-effekt for knapper/bilder -->
   <script src="JavaScript/tilt.js"></script>
+  <!-- Importerer hovedspill-logikk -->
   <script src="JavaScript/Spells.js"></script>
+  <!-- Importerer katteanimasjon -->
+  <script src="JavaScript/PixelCat.js"></script>
 </body>
 </html>

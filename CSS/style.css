@@ -1,7 +1,9 @@
-/*Brukte KI for design her og der, som linear-gradient koden, men skifta jo fargene selv,
-og det er flere av disse jeg fikk hjelp av KI og autofyll tingen,
+/* Brukte KI for design her og der, som linear-gradient koden, men skifta jo fargene selv,
+og det er flere av disse jeg fikk litt hjelp av KI og autofyll tingen,
 men jeg har jo gjort mine egene forandringer på flere av dem,
 brukte også KI for å lage grid og flexbox */
+
+/* Hovedbakgrunn og layout for index-siden */
 .body_Index {
     display: flex;
     flex-direction: column;
@@ -13,6 +15,7 @@ brukte også KI for å lage grid og flexbox */
     background: linear-gradient(135deg, #e00606 0%, #0d5cd2 100%);
 }
 
+/* Standard body for de fleste sider */
 .body {
     display: flex;
     flex-direction: column;
@@ -25,6 +28,7 @@ brukte også KI for å lage grid og flexbox */
     padding-top: 70px;
 }
 
+/* Photoshop-sider bakgrunn og layout */
 .Body_Photoshop {
     min-height: 100vh;
     margin: 0;
@@ -33,10 +37,12 @@ brukte også KI for å lage grid og flexbox */
     padding-top: 70px;
 }
 
+/* Font for hele nettsiden */
 body, .body, .Body_Photoshop, .body_Index {
     font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
 }
 
+/* Hovedtitler og kapitteloverskrifter */
 .main_titles, .chapters, h1, h2 {
     color: #00ff99;
     font-weight: 700;
@@ -44,15 +50,18 @@ body, .body, .Body_Photoshop, .body_Index {
     text-shadow: 0 0 8px #00ff99, 0 0 2px #000;
 }
 
+/* Standard tekst, lister og linker */
 p, li, a {
     color: #e0e0e0;
     font-size: 1.05rem;
 }
 
+/* Listeinnstilling */
 .list {
    list-style-position: inside;
 }
 
+/* Tekstboks for innhold */
 .text_box {
     background-color: rgb(0, 0, 0);
     box-shadow: 0 8px 32px rgba(0,0,0,0.12);
@@ -60,33 +69,41 @@ p, li, a {
     max-width: 1000px;
     min-height: 100vh;
     box-sizing: border-box;
+    position: relative;
+    z-index: 10;
 }
 
+/* Bilder sentreres og får margin */
 img {
     display: block;
     margin: 16px auto;
 }
 
+/* Tyngre vekt for hovedtitler og kapitteloverskrifter */
 .main_titles, .chapters {
     font-weight: 800;
 }
 
+/* Standard linker stil */
 a {
     color: #2563eb;
     font-weight: 500;
     text-decoration: none;
 }
 
+/* Hover-effekt for linker */
 a:hover {
     text-decoration: underline;
     color: #1e40af;
 }
 
+/* Fokus-effekt for linker */
 a:focus {
     text-decoration: underline;
     color: #1e40af;
 }
 
+/* Toppnavigasjon stil */
 .top_nav {
     position: fixed;
     top: 0;
@@ -101,6 +118,7 @@ a:focus {
     z-index: 1000;
 }
 
+/* Stil for bakoverpiler, hjem-knapper osv. */
 .back_arrow, .back_arrow_projects, .home_btn {
     display: inline-flex;
     align-items: center;
@@ -112,16 +130,19 @@ a:focus {
     margin: 0 10px;
 }
 
+/* Hover-effekt for bakoverpiler, hjem-knapper osv. */
 .back_arrow:hover, .back_arrow_projects:hover, .home_btn:hover {
     background-color: rgb(255,255,255);
     padding: 1px 1px;
     transform: scale(1.1); 
 }
 
+/* Bilder får peker-hånd ved hover */
 img:hover {
     cursor: pointer;
 }
 
+/* Rad med bilder, sentrert med mellomrom */
 .image_row {
     display: flex;
     justify-content: center;
@@ -129,6 +150,7 @@ img:hover {
     flex-wrap: wrap;
 }
 
+/* Stil for bilder i bilde-raden */
 .image_row img {
     max-width: 200px;
     height: auto;
@@ -136,18 +158,22 @@ img:hover {
     transition: transform 0.3s;
 }
 
+/* Zoom-effekt for bilder i bilde-raden ved hover */
 .image_row img:hover {
     transform: scale(1.05);
 }
 
+/* Fokus-effekt for bilder i bilde-raden */
 .image_row img:focus {
     transform: scale(1.05);
 }
 
+/* Prosjektpil får zoom-effekt ved hover */
 .prosjekt_pil:hover {
     transform: scale(1.10);
 }
 
+/* Galleri for Photoshop prosjekter, med grid layout */
 .Photoshop_Gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -157,12 +183,14 @@ img:hover {
     padding: 20px;
 }
 
+/* Spesifikk stil for Photoshop-galleri på Photoshop-sider */
 .Body_Photoshop .Photoshop_Gallery {
     max-width: 800px;
     margin: 40px auto;
     padding: 20px;
 }
 
+/* Responsiv tilpasning for mindre skjermer */
 @media (max-width: 900px) {
     .Body_Photoshop .Photoshop_Gallery {
         max-width: 98vw;
@@ -170,6 +198,7 @@ img:hover {
     }
 }
 
+/* Prosjektkort stil */
 .Project {
     background: #18181b;
     border-radius: 12px;
@@ -180,12 +209,14 @@ img:hover {
     border: 1px solid #00ff99;
 }
 
+/* Hover-effekt for prosjektkort */
 .Project:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 32px rgba(0,255,153,0.3);
     border-color: #fff;
 }
 
+/* Bilde i prosjektkort */
 .Project img {
     width: 100%;
     height: auto;
@@ -197,11 +228,13 @@ img:hover {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
+/* Zoom og skygge effekt for bilder i prosjektkort ved hover */
 .Project img:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 16px #00ff99;
 }
 
+/* Beskrivelse under prosjektbilder */
 .Card_Desc {
     background: #000;
     padding: 12px 0;
@@ -216,18 +249,21 @@ img:hover {
     letter-spacing: 1px;
 }
 
+/* Overgangseffekter for prosjekt og nettside kort */
 .Project, .Website_Card {
     transition: transform 0.2s, box-shadow 0.2s;
     will-change: transform;
     perspective: 600px;
 }
 
+/* Bilde med tilt-effekt */
 .Tilt_Img {
     transition: transform 0.2s, box-shadow 0.2s;
     will-change: transform;
     perspective: 600px;
 }
 
+/* Modal vindu stil */
 .Modal {
     display: none;
     position: fixed;
@@ -241,6 +277,7 @@ img:hover {
     align-items: center;
 }
 
+/* Innhold i modal vindu */
 .Modal_Content {
     background: #18181b;
     border-radius: 12px;
@@ -254,6 +291,7 @@ img:hover {
     border: 1px solid #00ff99;
 }
 
+/* Bilde i modalinnhold */
 .Modal_Content img {
     max-width: 300px;
     max-height: 400px;
@@ -262,6 +300,7 @@ img:hover {
     box-shadow: 0 4px 16px #00ff99;
 }
 
+/* Beskrivelse i modalinnhold */
 .Modal_Desc {
     flex: 1;
     background: #000;
@@ -274,6 +313,7 @@ img:hover {
     box-shadow: 0 2px 8px rgba(0,255,153,0.12);
 }
 
+/* Lukkeknapp for modalvinduer */
 .Close {
     position: absolute;
     top: 12px;
@@ -283,6 +323,7 @@ img:hover {
     cursor: pointer;
 }
 
+/* Fokus-effekt for bilder i prosjektkort */
 .Project img:focus {
     transform: scale(1.05);
     z-index: 2;
@@ -291,6 +332,7 @@ img:hover {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
+/* Innhold i zoomet modalvindu */
 .ModalZoom_Content {
     background: transparent;
     border-radius: 12px;
@@ -302,6 +344,7 @@ img:hover {
     position: relative;
 }
 
+/* Bilde i zoomet modalvindu */
 .ModalZoom_Content img {
     max-width: 80vw;
     max-height: 80vh;
@@ -309,6 +352,7 @@ img:hover {
     box-shadow: 0 8px 32px rgba(0,0,0,0.2);
 }   
 
+/* Lukkeknapp for zoomet modalvindu */
 .CloseZoom {
     position: absolute;
     top: 12px;
@@ -322,6 +366,7 @@ img:hover {
     z-index: 1;
 }
 
+/* Grid for nettside prosjekter */
 .Website_Grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -331,6 +376,7 @@ img:hover {
     padding: 20px;
 }
 
+/* Kort for nettside prosjekter */
 .Website_Card {
     background: #18181b;
     border-radius: 12px;
@@ -341,12 +387,14 @@ img:hover {
     border: 1px solid #00ff99;
 }
 
+/* Hover-effekt for nettside kort */
 .Website_Card:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 32px rgba(0,255,153,0.2);
     border-color: #fff;
 }
 
+/* Tittel for nettside kort */
 .Website_Card h3 {
     font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
     color: #00ff99;
@@ -354,6 +402,7 @@ img:hover {
     font-size: 1.2rem;
 }
 
+/* Lenke i nettside kort */
 .Website_Card a {
     display: inline-block;
     padding: 8px 16px;
@@ -367,11 +416,13 @@ img:hover {
     margin-top: 8px;
 }
 
+/* Hover-effekt for lenker i nettside kort */
 .Website_Card a:hover {
     background: #fff;
     color: #00ff99;
 }
 
+/* Galleri for videoer, med grid layout */
 .Video_Gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -382,6 +433,7 @@ img:hover {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
+/* Kort for videoer */
 .Video_Card {
     background: #18181b;
     border-radius: 12px;
@@ -394,27 +446,32 @@ img:hover {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
+/* Placeholder for videokort */
 .Video_Card.Placeholder {
     opacity: 0.7;
 }
 
+/* Hover-effekt for videokort */
 .Video_Card:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 32px rgba(0,255,153,0.3);
     border-color: #fff;
 }
 
+/* Miniatyrbilde for videoer */
 .Video_Thumbnail img {
     filter: grayscale(1) brightness(1.5);
     margin-bottom: 12px;
 }
 
+/* Tilt-effekt for bilder */
 .Tilt_Img {
     transition: transform 0.2s, box-shadow 0.2s;
     will-change: transform;
     perspective: 600px;
 }
 
+/* Typewriter cursor effekt */
 .Typewriter_Cursor {
     color: #00ff99;
     font-weight: bold;
@@ -423,10 +480,12 @@ img:hover {
     margin-left: 4px;
 }
 
+/* Blinkende effekt for cursor */
 @keyframes blink {
     to { opacity: 0; }
 }
 
+/* Kontakt knapp stil */
 .Contact_Btn {
     position: absolute;
     right: 60px;
@@ -440,12 +499,14 @@ img:hover {
     transition: background-color 0.3s, transform 0.3s;
 }
 
+/* Hover-effekt for kontakt knapp */
 .Contact_Btn:hover {
     background-color: rgb(255,255,255);
     transform: scale(1.1);
     box-shadow: 0 0 8px #00ff99;
 }
 
+/* Kontakt hacker stil */
 .Contact_Hacker {
     font-family: 'Fira Mono', monospace;
     color: #00ff99;
@@ -457,11 +518,13 @@ img:hover {
     margin-bottom: 12px;
 }
 
+/* Cursor stil for zoomet innhold */
 .ModalZoom_Content img:hover,
 #ZoomedImg:hover {
     cursor: default;
 }
 
+/* Knapp for øye og nese, for bildejustering */
 .EyeBtn, .NoseBtn {
     position: absolute;
     background: transparent;
@@ -474,16 +537,20 @@ img:hover {
     border-radius: 50%;
 }
 
+/* Plassering av øye og nese knapper */
 .left-eye { top: 217px; left: 165px;}
 .right-eye { top: 217px; left: 245px;}
 .NoseBtn { top: 250px; left: 210px;}
 
+/* Container for spillknapper */
 .games-btn-container {
   margin: 32px 0 0 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
+
+/* Hurtigspill knapp stil */
 #GamesFastBtn.tilt-btn {
   position: static;
   margin-left: 0;
@@ -492,22 +559,29 @@ img:hover {
   color: #222;
   box-shadow: 0 2px 12px #fff700;
 }
+
+/* Hover-effekt for hurtigspill knapp */
 #GamesFastBtn.tilt-btn:hover {
   background: linear-gradient(90deg, #fff700 0%, #222 100%);
   color: #fff;
   box-shadow: 0 4px 24px #fff700;
 }
+
+/* Animert element, skjult som standard */
 #WallyAnim {
   display: none;
   justify-content: center;
   align-items: center;
   animation: fadeIn 0.3s;
 }
+
+/* Fade in effekt for animert element */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
+/* Sentering og størrelse for Wally animasjon */
 .wally-center {
   position: absolute;
   top: 50%;
@@ -521,6 +595,7 @@ img:hover {
   z-index: 1;
 }
 
+/* Spesifikasjoner for berøringsskjermer */
 @media (pointer: coarse) {
   button, .tilt-btn, input[type="checkbox"], label {
     min-height: 48px;

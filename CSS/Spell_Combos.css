@@ -1,9 +1,11 @@
+/* Bakgrunn og font for spill-siden */
 body.body_Games {
   background: linear-gradient(135deg, #111 0%, #222 100%);
   margin: 0;
   font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
 }
 
+/* Hovedcontainer for spell-combiner */
 .spell-combiner-container {
   max-width: 500px;
   margin: 40px auto;
@@ -15,6 +17,7 @@ body.body_Games {
   text-align: center;
 }
 
+/* Overskrift og underoverskrift */
 .spell-combiner-container h1 {
   color: #ff0055;
   margin-bottom: 12px;
@@ -22,18 +25,19 @@ body.body_Games {
   font-size: 2.2em;
   letter-spacing: 2px;
 }
-
 .spell-combiner-container h3 {
   color: #00ff99;
   text-shadow: 0 0 8px #00ff99;
 }
 
+/* Spell-valg */
 #spell_form label {
   margin-right: 16px;
   font-size: 1.3em;
   letter-spacing: 1px;
 }
 
+/* Kombiner-knapp */
 #cast_combo_btn {
   margin: 18px 0 12px 0;
   padding: 10px 32px;
@@ -52,6 +56,7 @@ body.body_Games {
   color: #fff;
 }
 
+/* Spell-animasjon container */
 #spell_anim {
   min-height: 180px;
   display: flex;
@@ -59,6 +64,7 @@ body.body_Games {
   justify-content: center;
 }
 
+/* Spell-animasjon base */
 .spell_anim {
   width: 140px;
   height: 140px;
@@ -68,13 +74,14 @@ body.body_Games {
   animation: spellboom 1.2s linear;
 }
 
+/* Spell-animasjon keyframes */
 @keyframes spellboom {
   0% { transform: scale(0.5); opacity: 0.7; }
   50% { transform: scale(1.3); opacity: 1; }
   100% { transform: scale(2) rotate(360deg); opacity: 0; }
 }
 
-/* Unique effects for each combo */
+/* Unike effekter for hver spell combo */
 .spell_anim.steam {
   background: radial-gradient(circle at 70px 70px, #fff 0%, #00ffff 40%, #ff8000 80%, #00ff99 100%);
   box-shadow: 0 0 80px #fff,0 0 120px #00ffff;
@@ -148,12 +155,13 @@ body.body_Games {
   box-shadow: 0 0 120px #0099ff;
 }
 
-/* Default effect for unknown combos */
+/* Default effekt for ukjente kombinasjoner */
 .spell_anim.default {
   background: linear-gradient(135deg, #00ff99 0%, #fff 50%, #222 100%);
   box-shadow: 0 0 80px #00ff99;
 }
 
+/* Liste over oppdagede kombinasjoner */
 #combo_list {
   margin-top: 32px;
   background: #111;
@@ -170,6 +178,7 @@ body.body_Games {
   text-align: left;
 }
 
+/* Spell-melding */
 #spell_msg {
   margin-top: 18px;
   color: #ff0055;
@@ -177,6 +186,7 @@ body.body_Games {
   text-shadow: 0 0 8px #ff0055;
 }
 
+/* Tilt-knapp */
 .tilt-btn {
   position: fixed;
   top: 24px;
@@ -195,12 +205,12 @@ body.body_Games {
   transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
   will-change: transform;
 }
-
 .tilt-btn:hover {
   background: linear-gradient(90deg, #ff0055 0%, #222 100%);
   box-shadow: 0 4px 24px #ff0055;
 }
 
+/* Mobilvennlig spell-form og knapp */
 @media (pointer: coarse) {
   #spell_form label {
     font-size: 1.5em;
