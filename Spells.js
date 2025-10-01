@@ -12,7 +12,7 @@ const COMBOS = {
   'fire+lightning': { name: 'Plasma Dragon', desc: 'En plasma-drage eksploderer ut!', effect: plasmaDragon },
   'fire+shadow': { name: 'Hellflame', desc: 'Mørk ild sprer seg som en forbannelse!', effect: hellflame },
   'lightning+shadow': { name: 'Dark Voltage', desc: 'Mørkt lyn river gjennom dimensjonen!', effect: darkVoltage },
-  'fire+lightning+shadow': { name: 'Bankai: Apocalypse', desc: 'Alle krefter slippes løs i et anime-kaos!', effect: bankaiApocalypse }
+  'fire+lightning+shadow': { name: 'Bankai: Apocalypse', desc: 'Alle krefter slippes løs i et kaos!', effect: bankaiApocalypse }
 };
 
 function getComboKey(selected) {
